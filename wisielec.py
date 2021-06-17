@@ -27,11 +27,6 @@ animals=['cat', 'dog', 'zebra', 'fish', 'cow']
 
 alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
 
-def wybierz_kat():
-
-def kat_losowa():
-
-
 
 '''____________________ tworzymy okienko gry _____________________________'''
 
@@ -46,18 +41,12 @@ moj_pasek_menu = Menu(okienko)
 info_menu = Menu(pasekMenu, tearoff = 0)
 info_menu.add_command(label = "autorzy", command = autorzy)
 info_menu.add_command(label = "instrukcja", command = instrukacja)
-moj_pasek_menu.add_cascade(label = "informacje ogólne", menu = info_menu)
+moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
 
 ustawienia_menu = Menu(moj_pasek_menu, tearoff = 0)
 ustawienia_menu.add_command(label = "język", command = jezyk)
 ustawienia_menu.add_command(label = "nowa gra", command = nowa_gra)
 ustawienia_menu.add_command(label = "wyjście", command = okienko.quit)
 moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
-
-kat_menu = Menu(moj_pasek_menu, tearoff = 0)
-kat_menu.add_command(label = "wybierz kategorie", command = wybierz_kat)
-kat_menu.add_command(label = "kategoria losowa", command = kat_losowa)
-moj_pasek_menu.add_cascade(label = "kategoria", menu = kat_menu)
-okienko.config(menu = moj_pasek_menu)
 
 okienko.mainloop()
