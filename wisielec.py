@@ -18,6 +18,15 @@ def jezyk():
     
 def nowa_gra():
 
+kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
+owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
+zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
+colours=['red', 'green', 'blue', 'purple', 'black']
+fruits=['mango', 'pear', 'strawberry', 'banana', 'coconut']
+animals=['cat', 'dog', 'zebra', 'fish', 'cow']
+
+alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
+
 def wybierz_kat():
 
 def kat_losowa():
