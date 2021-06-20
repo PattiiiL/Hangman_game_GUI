@@ -25,7 +25,39 @@ def instrukacja():
 #def jezyk():
     
 #def nowa_gra():
+#wczytanie grafiki z poszczególnymi etapami wisielca
+hangman1=PhotoImage(file='hangman_1.png')
+hangman1_zdj=Label(image=hangman1)
+#przykładowe umiejscowienie: hangman1_zdj.place(x=300, y=100)
 
+hangman2=PhotoImage(file='hangman_2.png')
+hangman2_zdj=Label(image=hangman2)
+
+hangman3=PhotoImage(file='hangman_3.png')
+hangman3_zdj=Label(image=hangman3)
+
+hangman4=PhotoImage(file='hangman_4.png')
+hangman4_zdj=Label(image=hangman4)
+
+hangman5=PhotoImage(file='hangman_5.png')
+hangman5_zdj=Label(image=hangman5)
+
+hangman6=PhotoImage(file='hangman_6.png')
+hangman6_zdj=Label(image=hangman6)
+
+hangman7=PhotoImage(file='hangman_7.png')
+hangman7_zdj=Label(image=hangman7)
+
+hangman8=PhotoImage(file='hangman_8.png')
+hangman8_zdj=Label(image=hangman8)
+
+hangman9=PhotoImage(file='hangman_9.png')
+hangman9_zdj=Label(image=hangman9)
+
+hangman10=PhotoImage(file='hangman_10.png')
+hangman10_zdj=Label(image=hangman1)
+
+#wczytanie list ze słowami
 kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
 owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
 zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
