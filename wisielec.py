@@ -14,18 +14,38 @@ okienko.geometry("400x500")
 '''_____________________ wszystkie funkcje _____________________________ '''
 
 
-#def autorzy():
- #   tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
-  #  tekst.pack(side = TOP)
+def autorzy():
+    tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
+    tekst.pack(side = TOP)
     
-#def instrukacja():
- #   tekst = Label(okienko, text = "Witaj w grze wisielec! /n ")
-  #  tekst.pack(side = TOP)
+def instrukacja():
+    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, zktórej chcesz wylosować hasło. ")
+    tekst.pack(side = TOP)
 
-#def jezyk():
+"""def jezyk_ang(lista_1,lista_2,lista_3):
+    kat_1 = lista_1
+    kat_2 = lista_2
+    kat_3 = lista_3
+    return kat_1, kat_2, kat_3
+   
+def jezyk_pl(lista_1,lista_2,lista_3):
+    kat_1 = lista_1
+    kat_2 = lista_2
+    kat_3 = lista_3
+    return kat_1, kat_2, kat_3"""
     
 #def nowa_gra():
 
+"""def akcja_przycisk():
+    if wartosc.get() == 1:
+        
+    elif wartosc.get() == 2:
+       
+    elif wartosc.get() == 3:
+        
+    elif wartosc.get() == 4:"""
+
+        
 class Hangman():
     def __init__(self, okienko):        
         self.okienko = okienko
@@ -84,10 +104,12 @@ okienko.mainloop()
 #hangman10=PhotoImage(file='hangman_10.png')
 #hangman10_zdj=Label(image=hangman1)
 
+
 #wczytanie list ze słowami
 kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
 owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
 zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
+
 colours=['red', 'green', 'blue', 'purple', 'black']
 fruits=['mango', 'pear', 'strawberry', 'banana', 'coconut']
 animals=['cat', 'dog', 'zebra', 'fish', 'cow']
@@ -98,6 +120,7 @@ alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', '
 def losuj_wyraz(lista_wyrazow):
     wyraz=random.choice(lista_wyrazow)
     lista_wyrazu=list(wyraz)
+    return lista_wyrazu
 
 
 
@@ -108,17 +131,36 @@ def losuj_wyraz(lista_wyrazow):
 
 '''____________________ tworzymy menu gry _______________________________'''
 
-#moj_pasek_menu = Menu(okienko)
+moj_pasek_menu = Menu(okienko)
 
-#info_menu = Menu(moj_pasek_menu, tearoff = 0)
-#info_menu.add_command(label = "autorzy", command = autorzy)
-#info_menu.add_command(label = "instrukcja", command = instrukacja)
-#moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
+info_menu = Menu(moj_pasek_menu, tearoff = 0)
+info_menu.add_command(label = "autorzy", command = autorzy)
+info_menu.add_command(label = "instrukcja", command = instrukacja)
+moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
 
-#ustawienia_menu = Menu(moj_pasek_menu, tearoff = 0)
-#ustawienia_menu.add_command(label = "język", command = jezyk)
-#ustawienia_menu.add_command(label = "nowa gra", command = nowa_gra)
-#ustawienia_menu.add_command(label = "wyjście", command = okienko.quit)
-#moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
+ustawienia_menu = Menu(moj_pasek_menu, tearoff = 0)
+ustawienia_menu.add_command(label = "język", command = jezyk)
+ustawienia_menu.add_command(label = "nowa gra", command = nowa_gra)
+ustawienia_menu.add_command(label = "wyjście", command = okienko.quit)
+moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
+
+"""jezyk_menu = Menu(moj_pasek_menu, tearoff = 0)
+jezyk_menu.add_command(label = "English", command = jezyk_ang)
+jezyk_menu.add_command(label = "Polski", command = jezyk_pl)
+moj_pasek_menu.add_cascade(label = "język", menu = jezyk_menu)"""
 
 
+
+'''________________ tworzymy RadioButton z kategoriami _______________________'''
+
+przycisk = Button(okienko, text = "Wybor kategorii")
+przycisk.grid(row =0, column = 0)
+
+rprzycisk_1 = Radiobutton(okienko, text = "kolory", variable = wartosc, value = 1, command = akcja_przycisk)
+rprzycisk_1.grid(row =1, column = 0)
+rprzycisk_2 = Radiobutton(okienko, text = "owoce", variable = wartosc, value = 2, command= akcja_przycisk)
+rprzycisk_2.grid(row =1, column = 1)
+rprzycisk_3 = Radiobutton(okienko, text = "zwierzeta", variable = wartosc, value = 3, command = akcja_przycisk)
+rprzycisk_3.grid(row =1, column = 2)
+rprzycisk_4 = Radiobutton(okienko, text = "losowa", variable = wartosc, value = 4, command = akcja_przycisk)
+rprzycisk_4.grid(row =1, column = 3)
