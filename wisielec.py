@@ -5,10 +5,60 @@ from tkinter import messagebox
 import random
 
 '''____________________ tworzymy okienko gry _____________________________'''
+class our_GUI(): 
+    def __init__(self):
+        self.okienko = Tk()
+        self.okienko.title("Wisielec")
+        self.okienko.geometry("400x500")
+    
+    # kategorie haseł
+        self.kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
+        self.owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
+        self.zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
+       
+     def losuj_wyraz(lista_wyrazow):
+        wyraz=random.choice(lista_wyrazow)
+        lista_wyrazu=list(wyraz)
+    return lista_wyrazu
 
-okienko = Tk()
-okienko.title("Wisielec")
-okienko.geometry("400x500")
+    def akcja_przycisk(self):
+        if wartosc.get() == 1:
+            losuj_wyraz(self.kolory)
+        
+        elif wartosc.get() == 2:
+            losuj_wyraz(self.owoce)
+       
+        elif wartosc.get() == 3:
+            losuj_wyraz(self.zwierzeta)
+        
+        elif wartosc.get() == 4:
+            lista = self.kolory[:] + self.owoce[:] + self.zwierzeta[:]
+            losuj_wyraz(lista)
+        
+    
+    
+'''________________ tworzymy RadioButton z kategoriami _______________________'''
+    def cathegory_button(self):
+        
+        przycisk = Button(self.okienko, text = "Wybor kategorii")
+        przycisk.grid(row =0, column = 0)
+        
+        rprzycisk_1 = Radiobutton(self.okienko, text = "kolory", variable = wartosc, value = 1, command = akcja_przycisk)
+        rprzycisk_1.grid(row =1, column = 0)
+        rprzycisk_2 = Radiobutton(self.okienko, text = "owoce", variable = wartosc, value = 2, command= akcja_przycisk)
+        rprzycisk_2.grid(row =1, column = 1)
+        rprzycisk_3 = Radiobutton(self.okienko, text = "zwierzeta", variable = wartosc, value = 3, command = akcja_przycisk)
+        rprzycisk_3.grid(row =1, column = 2)
+        rprzycisk_4 = Radiobutton(self.okienko, text = "losowa", variable = wartosc, value = 4, command = akcja_przycisk)
+        rprzycisk_4.grid(row =1, column = 3)
+
+    
+    def losuj_wyraz(lista_wyrazow):
+        wyraz=random.choice(lista_wyrazow)
+        lista_wyrazu=list(wyraz)
+    return lista_wyrazu
+
+
     
 
 '''_____________________ wszystkie funkcje _____________________________ '''
@@ -19,7 +69,7 @@ def autorzy():
     tekst.pack(side = TOP)
     
 def instrukacja():
-    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, zktórej chcesz wylosować hasło. ")
+    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, z której chcesz wylosować hasło. ")
     tekst.pack(side = TOP)
 
 """def jezyk_ang(lista_1,lista_2,lista_3):
@@ -35,15 +85,6 @@ def jezyk_pl(lista_1,lista_2,lista_3):
     return kat_1, kat_2, kat_3"""
     
 #def nowa_gra():
-
-"""def akcja_przycisk():
-    if wartosc.get() == 1:
-        
-    elif wartosc.get() == 2:
-       
-    elif wartosc.get() == 3:
-        
-    elif wartosc.get() == 4:"""
 
         
 class Hangman():
@@ -150,17 +191,3 @@ jezyk_menu.add_command(label = "Polski", command = jezyk_pl)
 moj_pasek_menu.add_cascade(label = "język", menu = jezyk_menu)"""
 
 
-
-'''________________ tworzymy RadioButton z kategoriami _______________________'''
-
-przycisk = Button(okienko, text = "Wybor kategorii")
-przycisk.grid(row =0, column = 0)
-
-rprzycisk_1 = Radiobutton(okienko, text = "kolory", variable = wartosc, value = 1, command = akcja_przycisk)
-rprzycisk_1.grid(row =1, column = 0)
-rprzycisk_2 = Radiobutton(okienko, text = "owoce", variable = wartosc, value = 2, command= akcja_przycisk)
-rprzycisk_2.grid(row =1, column = 1)
-rprzycisk_3 = Radiobutton(okienko, text = "zwierzeta", variable = wartosc, value = 3, command = akcja_przycisk)
-rprzycisk_3.grid(row =1, column = 2)
-rprzycisk_4 = Radiobutton(okienko, text = "losowa", variable = wartosc, value = 4, command = akcja_przycisk)
-rprzycisk_4.grid(row =1, column = 3)
