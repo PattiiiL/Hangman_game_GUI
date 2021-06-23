@@ -53,7 +53,15 @@ class Hangman():
         self.miejsce_na_rysunek_hangmana.place(x=250,y=100)
         self.hangman_img=[]
         self.MAX_LICZBA_BLEDOW=10
-        self.read()      
+        self.read()  
+
+    def licz_bledy(self, lista):
+        lista_bledow=[]
+        for l in lista_bledow:
+            if l not in lista:
+                lista_bledow.append(l)
+                self.MAX_LICZBA_BLEDOW+=1
+
 
     def read(self):
         for i in range(self.MAX_LICZBA_BLEDOW):
@@ -64,6 +72,8 @@ class Hangman():
         obrazek = self.hangman_img[numer-1]
         self.miejsce_na_rysunek_hangmana.configure(image=obrazek)
         self.miejsce_na_rysunek_hangmana.image = obrazek
+
+    
 
 hangman=Hangman(okienko)
 hangman.draw(5)
