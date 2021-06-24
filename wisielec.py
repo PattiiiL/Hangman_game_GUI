@@ -45,7 +45,16 @@ def jezyk_pl(lista_1,lista_2,lista_3):
         
     elif wartosc.get() == 4:"""
 
-        
+kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
+owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
+zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
+
+colours=['red', 'green', 'blue', 'purple', 'black']
+fruits=['mango', 'pear', 'strawberry', 'banana', 'coconut']
+animals=['cat', 'dog', 'zebra', 'fish', 'cow']
+
+alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
+  
 class Hangman():
     def __init__(self, okienko):        
         self.okienko = okienko
@@ -54,13 +63,26 @@ class Hangman():
         self.hangman_img=[]
         self.MAX_LICZBA_BLEDOW=10
         self.read()  
+    
+    #funkcja losujaca wyraz i dzielaca go na litery
+    def losuj_wyraz(lista_wyrazow):
+        wyraz=random.choice(lista_wyrazow)
+        lista_wyrazu=list(wyraz)
+        return lista_wyrazu
 
-    def licz_bledy(self, lista):
+    def licz_bledy(self):
         lista_bledow=[]
         for l in lista_bledow:
-            if l not in lista:
+            if l not in self.lista_wyrazu:
                 lista_bledow.append(l)
                 self.MAX_LICZBA_BLEDOW+=1
+    
+    def wylacz_uzyte_litery(self, litera):
+        uzyte_litery=[]
+        for litera in alfabet:
+            if litera in alfabet:
+                uzyte_litery.append(litera)
+
 
 
     def read(self):
@@ -113,30 +135,6 @@ okienko.mainloop()
 
 #hangman10=PhotoImage(file='hangman_10.png')
 #hangman10_zdj=Label(image=hangman1)
-
-
-#wczytanie list ze słowami
-kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
-owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
-zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
-
-colours=['red', 'green', 'blue', 'purple', 'black']
-fruits=['mango', 'pear', 'strawberry', 'banana', 'coconut']
-animals=['cat', 'dog', 'zebra', 'fish', 'cow']
-
-alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
-
-#funkcja losujaca wyraz i dzielaca go na litery
-def losuj_wyraz(lista_wyrazow):
-    wyraz=random.choice(lista_wyrazow)
-    lista_wyrazu=list(wyraz)
-    return lista_wyrazu
-
-
-
-
-
-
 
 
 '''____________________ tworzymy menu gry _______________________________'''
