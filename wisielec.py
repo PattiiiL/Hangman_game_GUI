@@ -62,6 +62,7 @@ class Hangman():
         self.miejsce_na_rysunek_hangmana.place(x=250,y=100)
         self.hangman_img=[]
         self.MAX_LICZBA_BLEDOW=10
+        self.licznik_bledow=0
         self.read()  
     
     #funkcja losujaca wyraz i dzielaca go na litery
@@ -75,15 +76,13 @@ class Hangman():
         for l in lista_bledow:
             if l not in self.lista_wyrazu:
                 lista_bledow.append(l)
-                self.MAX_LICZBA_BLEDOW+=1
+                self.licznik_bledow+=1
     
     def wylacz_uzyte_litery(self, litera):
         uzyte_litery=[]
         for litera in alfabet:
             if litera in alfabet:
                 uzyte_litery.append(litera)
-
-
 
     def read(self):
         for i in range(self.MAX_LICZBA_BLEDOW):
@@ -94,6 +93,13 @@ class Hangman():
         obrazek = self.hangman_img[numer-1]
         self.miejsce_na_rysunek_hangmana.configure(image=obrazek)
         self.miejsce_na_rysunek_hangmana.image = obrazek
+
+    def przegrana(self):
+        if self.licznik_bledow==self.MAX_LICZBA_BLEDOW:
+            return 0
+    
+    #def wygrana(self):
+        
 
     
 
