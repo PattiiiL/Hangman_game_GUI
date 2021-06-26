@@ -6,175 +6,131 @@ import random
 
 '''____________________ tworzymy okienko gry _____________________________'''
 
-okienko = Tk()
-okienko.title("Wisielec")
-okienko.geometry("400x500")
-    
+class Hangman_GUI(): 
+    def __init__(self):
+        # kategorie haseł
+        self.kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
+        self.owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
+        self.zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
+
+        self.lista_wyrazow = []
+
+        self.zgadywane_slowo = []
+        self.bledne_litery = []
+        self.zakryte_slowo = []
+
+        self.alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
+        
+        # Tworzymy okienka w GUI z widgetami
+        self.okienko = tkinter.Tk()
+        self.top_frame = tkinter.Frame(self.okienko)
+        self.middle_frame = tkinter.Frame(self.okienko
+        self.bottom_frame = tkinter.Frame(self.okienko)
+        self.okienko = tkinter.Tk()
+        self.etykietka_1 = tkinter.Label(self.top_frame, text = "Gra wisielec")
+        self.radio_button_wartosci = tkinter.IntVar()
+
+        # Tworzymy RadioButton z kategoriami
+        
+        self.radio_button_wartosci.set(4)
+                                          
+        self.rprzycisk_1 = Radiobutton(self.middle_frame, text = "kolory", variable = self.radio_button_wartosci, value = 1, command = losuj_kat)                               
+        self.rprzycisk_2 = Radiobutton(self.middle_frame, text = "owoce", variable = self.radio_button_wartosci, value = 2, command= losuj_kat)                               
+        self.rprzycisk_3 = Radiobutton(self.middle_frame, text = "zwierzeta", variable = self.radio_button_wartosci, value = 3, command = losuj_kat)                              
+        self.rprzycisk_4 = Radiobutton(self.middle_frame, text = "losowa", variable = self.radio_button_wartosci, value = 4, command = losuj_kat)
+
+
+        self.przycisk = tkinter.Button(self.okienko, text = "Wyświetl wylosowane słowo", command = self.zakryte_slowo)
+        self.wpisz_litere_info = tkinter.Label(self.bottom_frame, text = "Podaj dowolną literę - pomiń znaki polskie!")       
+        self.wpisz_litere_okienko = tkinter.Entry(self.bottom_frame, width = 10)
+        self.przycisk_spr = tkinter.Button(self.okienko, text = "Sprawdź", command = self.sprawdz_litere)
+
+        self.rprzycisk_1.pack()
+        self.rprzycisk_2.pack()
+        self.rprzycisk_3.pack()
+        self.rprzycisk_4.pack()
+
+        self.etykietka_1.pack(side = "top")
+
+        self.przycisk.pack()
+        self.wpisz_litere_info.pack(side = "left")
+        self.wpisz_litere_okienko(side = "left")
+
+        self.top_frame.pack()
+        self.middle_frame.pack()           
+        self.bottom_frame.pack()
+
+        # Tworzymy menu gry
+
+        self.moj_pasek_menu = Menu(self.okienko)
+
+        info_menu = Menu(self.moj_pasek_menu, tearoff = 0)
+        info_menu.add_command(label = "autorzy", command = autorzy)
+        info_menu.add_command(label = "instrukcja", command = instrukacja)
+        moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
+
+        ustawienia_menu = Menu(self.moj_pasek_menu, tearoff = 0)
+        ustawienia_menu.add_command(label = "język", command = jezyk)
+        ustawienia_menu.add_command(label = "nowa gra", command = nowa_gra)
+        ustawienia_menu.add_command(label = "wyjście", command = self.okienko.quit)
+        moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
+
+        tkinter.mainloop()
 
 '''_____________________ wszystkie funkcje _____________________________ '''
 
+    def losuj_kat(self):
+        if value == 1:
+            self.lista_wyrazow = self.kolory
+        if value == 2:
+            self.lista_wyrazow = self.owoce
+        if value == 3:
+            self.lista_wyrazow = self.zwierzeta
+        if value == 4:
+            self.lista_wyrazow = self.kolory + self.owoce + self.zwierzeta
+            
+    return lista_wyrazow
+        
+    def losuj_wyraz(lista_wyrazow,losuj_kat):
+        wyraz=random.choice(lista_wyrazow)
+        lista_wyrazu=list(wyraz)
+    return lista_wyrazu
 
-def autorzy():
-    tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
-    tekst.pack(side = TOP)
+    def zakryte_slowo(self):
+        for i in range(len(lista_wyrazu[:])):
+            self.zakryte_slowo += "_"
+        tkinter.messagebox.showinfo("Wylosowane słowo", print(zakreskowane))
+        slowo_kreski = print(zakryte_slowo)
+    return slowo_kreski
+        
+
+    def sprawdz_litere(self,losuj_wyraz):
+        sprawdzana = self.wpisz_litere_okienko.get()
+        for i in range(len(lista_wyrazu[:])):
+            if i == sprawdzana:
+                 self.zgadywane_slowo += i
+        # do ogarniecia zeby litery dodawaly sie na odp msc
+            else:
+                self.bledne_litery += i
+
+    def autorzy():
+        tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
+        tekst.pack(side = TOP)
     
-def instrukacja():
-    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, zktórej chcesz wylosować hasło. ")
-    tekst.pack(side = TOP)
+    def instrukacja():
+        tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, z której chcesz wylosować hasło. ")
+        tekst.pack(side = TOP)
 
-"""def jezyk_ang(lista_1,lista_2,lista_3):
-    kat_1 = lista_1
-    kat_2 = lista_2
-    kat_3 = lista_3
-    return kat_1, kat_2, kat_3
-   
-def jezyk_pl(lista_1,lista_2,lista_3):
-    kat_1 = lista_1
-    kat_2 = lista_2
-    kat_3 = lista_3
-    return kat_1, kat_2, kat_3"""
+
     
 #def nowa_gra():
 
-"""def akcja_przycisk():
-    if wartosc.get() == 1:
-        
-    elif wartosc.get() == 2:
-       
-    elif wartosc.get() == 3:
-        
-    elif wartosc.get() == 4:"""
+# utworzenie egzemplarza klasy Hangman_GUI
 
-kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
-owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
-zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
+wisielec = Hangman_GUI()
 
-colours=['red', 'green', 'blue', 'purple', 'black']
-fruits=['mango', 'pear', 'strawberry', 'banana', 'coconut']
-animals=['cat', 'dog', 'zebra', 'fish', 'cow']
-
-alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
-  
-class Hangman():
-    def __init__(self, okienko):        
-        self.okienko = okienko
-        self.miejsce_na_rysunek_hangmana = Label(self.okienko)
-        self.miejsce_na_rysunek_hangmana.place(x=250,y=100)
-        self.hangman_img=[]
-        self.MAX_LICZBA_BLEDOW=10
-        self.licznik_bledow=0
-        self.read()  
-    
-    #funkcja losujaca wyraz i dzielaca go na litery
-    def losuj_wyraz(lista_wyrazow):
-        wyraz=random.choice(lista_wyrazow)
-        lista_wyrazu=list(wyraz)
-        return lista_wyrazu
-
-    def licz_bledy(self):
-        lista_bledow=[]
-        for l in lista_bledow:
-            if l not in self.lista_wyrazu:
-                lista_bledow.append(l)
-                self.licznik_bledow+=1
-    
-    def wylacz_uzyte_litery(self, litera):
-        uzyte_litery=[]
-        for litera in alfabet:
-            if litera in alfabet:
-                uzyte_litery.append(litera)
-
-    def read(self):
-        for i in range(self.MAX_LICZBA_BLEDOW):
-            img=PhotoImage(file='hangman_'+str(i+1)+'.png')
-            self.hangman_img.append(img)
-
-    def draw(self, numer):
-        obrazek = self.hangman_img[numer-1]
-        self.miejsce_na_rysunek_hangmana.configure(image=obrazek)
-        self.miejsce_na_rysunek_hangmana.image = obrazek
-
-    def przegrana(self):
-        if self.licznik_bledow==self.MAX_LICZBA_BLEDOW:
-            return 0
-    
-    #def wygrana(self):
         
 
-    
-
-hangman=Hangman(okienko)
-hangman.draw(5)
-okienko.mainloop()
-
-#hangman.draw(1)
-#wczytanie grafiki z poszczególnymi etapami wisielca
-#hangman1=PhotoImage(file='hangman_1.png')
-#hangman1_zdj=Label(image=hangman1)
-#przykładowe umiejscowienie:
-#hangman1_zdj.place(x=250, y=100)
-
-#hangman2=PhotoImage(file='hangman_2.png')
-#hangman2_zdj=Label(image=hangman2)
-
-
-#hangman3=PhotoImage(file='hangman_3.png')
-#hangman3_zdj=Label(image=hangman3)
-
-#hangman4=PhotoImage(file='hangman_4.png')
-#hangman4_zdj=Label(image=hangman4)
-
-#hangman5=PhotoImage(file='hangman_5.png')
-#hangman5_zdj=Label(image=hangman5)
-
-#hangman6=PhotoImage(file='hangman_6.png')
-#hangman6_zdj=Label(image=hangman6)
-
-#hangman7=PhotoImage(file='hangman_7.png')
-#hangman7_zdj=Label(image=hangman7)
-
-#hangman8=PhotoImage(file='hangman_8.png')
-#hangman8_zdj=Label(image=hangman8)
-
-#hangman9=PhotoImage(file='hangman_9.png')
-#hangman9_zdj=Label(image=hangman9)
-
-#hangman10=PhotoImage(file='hangman_10.png')
-#hangman10_zdj=Label(image=hangman1)
-
-
-'''____________________ tworzymy menu gry _______________________________'''
-
-moj_pasek_menu = Menu(okienko)
-
-info_menu = Menu(moj_pasek_menu, tearoff = 0)
-info_menu.add_command(label = "autorzy", command = autorzy)
-info_menu.add_command(label = "instrukcja", command = instrukacja)
-moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
-
-ustawienia_menu = Menu(moj_pasek_menu, tearoff = 0)
-ustawienia_menu.add_command(label = "język", command = jezyk)
-ustawienia_menu.add_command(label = "nowa gra", command = nowa_gra)
-ustawienia_menu.add_command(label = "wyjście", command = okienko.quit)
-moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
-
-"""jezyk_menu = Menu(moj_pasek_menu, tearoff = 0)
-jezyk_menu.add_command(label = "English", command = jezyk_ang)
-jezyk_menu.add_command(label = "Polski", command = jezyk_pl)
-moj_pasek_menu.add_cascade(label = "język", menu = jezyk_menu)"""
 
 
 
-'''________________ tworzymy RadioButton z kategoriami _______________________'''
-
-przycisk = Button(okienko, text = "Wybor kategorii")
-przycisk.grid(row =0, column = 0)
-
-rprzycisk_1 = Radiobutton(okienko, text = "kolory", variable = wartosc, value = 1, command = akcja_przycisk)
-rprzycisk_1.grid(row =1, column = 0)
-rprzycisk_2 = Radiobutton(okienko, text = "owoce", variable = wartosc, value = 2, command= akcja_przycisk)
-rprzycisk_2.grid(row =1, column = 1)
-rprzycisk_3 = Radiobutton(okienko, text = "zwierzeta", variable = wartosc, value = 3, command = akcja_przycisk)
-rprzycisk_3.grid(row =1, column = 2)
-rprzycisk_4 = Radiobutton(okienko, text = "losowa", variable = wartosc, value = 4, command = akcja_przycisk)
-rprzycisk_4.grid(row =1, column = 3)
