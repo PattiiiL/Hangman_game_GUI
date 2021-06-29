@@ -18,7 +18,7 @@ def autorzy():
     #tekst.pack(side = TOP)
     
 def instrukacja():
-    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, zktórej chcesz wylosować hasło. ")
+    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"Sprawdź\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"Sprawdź wykorzystane litery\". \n Aby rozpocząć nową gre naciśnij przycisk \" Nowa gra \" \nPowodzenia!")
     #tekst.pack(side = TOP)
 
 
