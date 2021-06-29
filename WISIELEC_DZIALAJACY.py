@@ -41,38 +41,29 @@ class Hangman():
 
 
         self.wpisz_litere_info = Label(self.okienko, text = "Podaj dowolną literę - pomiń znaki polskie!")
-        self.ukryte_haslo = Label(self.okienko, text = "info")    
+        self.ukryte_haslo = Label(self.okienko, text = "info")
+        self.instrukcja = Button(self.okienko, text = "Instrukcja", command = instrukcja)
+        self.autorzy = Button(self.okienko, text = "Autorzy", command = autorzy)
         self.wpisz_litere_okienko = Entry(self.okienko)
         self.przycisk_zle_litery = Button(self.okienko, text = "Sprawdź wykorzystane litery:", command = self.zle_litery)
         self.przycisk_spr = Button(self.okienko, text = "Sprawdź", command = self.sprawdz_litere)
         self.przycisk_nowa_gra=Button(self.okienko, text="Nowa gra", command=self.uruchom_nowa_gre)
        
         
-        self.txt_wybierz_kategorie.place(x=20, y=10)
-        self.rprzycisk_1.place(x=25,y=30)
-        self.rprzycisk_2.place(x=25,y=50)
-        self.rprzycisk_3.place(x=25, y=70)
-        self.rprzycisk_4.place(x=25, y=90)
-        self.przycisk_zle_litery.place(x=25, y=110)
+        self.instrukcja.place(x=10, y=10)
+        self.autorzy.place(x=10, y=20)
+        self.txt_wybierz_kategorie.place(x=20, y=30)
+        self.rprzycisk_1.place(x=25,y=50)
+        self.rprzycisk_2.place(x=25,y=70)
+        self.rprzycisk_3.place(x=25, y=90)
+        self.rprzycisk_4.place(x=25, y=110)
+        self.przycisk_zle_litery.place(x=25, y=130)
         self.ukryte_haslo.place(x=310, y=260)
         self.wpisz_litere_info.place(x=25, y=240)
         
         self.wpisz_litere_okienko.place(x=25, y=260)
         self.przycisk_spr.place(x=125, y=260)
         self.przycisk_nowa_gra.place(x=170, y=470)
-
-        # Tworzymy menu gry
-
-        self.moj_pasek_menu = Menu(self.okienko)
-
-        info_menu = Menu(self.moj_pasek_menu, tearoff = 0)
-        info_menu.add_command(label = "autorzy", command = autorzy)
-        info_menu.add_command(label = "instrukcja", command = self.instrukcja)
-        self.moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
-
-        ustawienia_menu = Menu(self.moj_pasek_menu, tearoff = 0)
-        ustawienia_menu.add_command(label = "wyjście", command = self.okienko.quit)
-        self.moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
 
         self.uruchom_nowa_gre()
 
