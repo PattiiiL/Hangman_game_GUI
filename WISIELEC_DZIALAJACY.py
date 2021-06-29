@@ -42,24 +42,24 @@ class Hangman():
 
         self.wpisz_litere_info = Label(self.okienko, text = "Podaj dowolną literę - pomiń znaki polskie!")
         self.ukryte_haslo = Label(self.okienko, text = "info")
-        self.instrukcja = Button(self.okienko, text = "Instrukcja", command = instrukcja)
-        self.autorzy = Button(self.okienko, text = "Autorzy", command = autorzy)
+        self.instrukcja = Button(self.okienko, text = "Instrukcja", command = self.wyswietl_instrukcje)
+        self.autorzy = Button(self.okienko, text = "Autorzy", command = self.wyswietl_autorow)
         self.wpisz_litere_okienko = Entry(self.okienko)
         self.przycisk_zle_litery = Button(self.okienko, text = "Sprawdź wykorzystane litery:", command = self.zle_litery)
         self.przycisk_spr = Button(self.okienko, text = "Sprawdź", command = self.sprawdz_litere)
         self.przycisk_nowa_gra=Button(self.okienko, text="Nowa gra", command=self.uruchom_nowa_gre)
        
         
-        self.instrukcja.place(x=10, y=10)
+        self.instrukcja.place(x=70, y=10)
         self.autorzy.place(x=10, y=20)
-        self.txt_wybierz_kategorie.place(x=20, y=30)
-        self.rprzycisk_1.place(x=25,y=50)
+        self.txt_wybierz_kategorie.place(x=20, y=50)
+        self.rprzycisk_1.place(x=20,y=50)
         self.rprzycisk_2.place(x=25,y=70)
         self.rprzycisk_3.place(x=25, y=90)
         self.rprzycisk_4.place(x=25, y=110)
         self.przycisk_zle_litery.place(x=25, y=130)
-        self.ukryte_haslo.place(x=310, y=260)
-        self.wpisz_litere_info.place(x=25, y=240)
+        self.ukryte_haslo.place(x=310, y=300)
+        self.wpisz_litere_info.place(x=25, y=280)
         
         self.wpisz_litere_okienko.place(x=25, y=260)
         self.przycisk_spr.place(x=125, y=260)
@@ -71,11 +71,11 @@ class Hangman():
 
     '''_____________________ wszystkie funkcje _____________________________ '''
     
-    def autorzy():
-        messagebox.showinfo("Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
+    def wyswietl_autorow():
+        messagebox.showinfo("Autotzy","Kornelia Winiarska i Monika Patrycja Lelujko")
     
-    def instrukcja():
-        messagebox.showinfo("Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"Sprawdź\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"Sprawdź wykorzystane litery\". \n Aby rozpocząć nową gre naciśnij przycisk \" Nowa gra \" \nPowodzenia!")
+    def wyswietl_instrukcje():
+        messagebox.showinfo("Instrukcja","Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"SPRAWDŹ\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"SPRAWDŹ WYKORZYSTANE LITERY\". \n Aby rozpocząć nową gre naciśnij przycisk \" NOWA GRA\" \nPowodzenia!")
 
     def losuj_kat(self):
         value=self.radio_button_wartosci.get()
