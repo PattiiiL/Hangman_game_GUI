@@ -225,18 +225,3 @@ hangman.draw(5)
 okienko.mainloop()
 
 
-'''____________________ tworzymy menu gry _______________________________'''
-
-'''moj_pasek_menu = Menu(okienko)
-
-info_menu = Menu(moj_pasek_menu, tearoff = 0)
-info_menu.add_command(label = "autorzy", command = autorzy)
-info_menu.add_command(label = "instrukcja", command = instrukacja)
-moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
-
-ustawienia_menu = Menu(moj_pasek_menu, tearoff = 0)
-ustawienia_menu.add_command(label = "nowa gra", command = nowa_gra)
-ustawienia_menu.add_command(label = "wyjście", command = okienko.quit)
-moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)'''
-
-
