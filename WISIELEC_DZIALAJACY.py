@@ -79,7 +79,6 @@ class Hangman():
 
     def losuj_kat(self):
         value=self.radio_button_wartosci.get()
-        print(value)
         if value == 1:
             self.lista_wyrazow = self.kolory
         if value == 2:
@@ -88,7 +87,6 @@ class Hangman():
             self.lista_wyrazow = self.zwierzeta
         if value == 4:
             self.lista_wyrazow = self.kolory + self.owoce + self.zwierzeta
-        print(self.lista_wyrazow)
         self.losuj_wyraz()
         self.dezaktywuj_przyciski(True)
     
@@ -110,12 +108,10 @@ class Hangman():
         wyraz=random.choice(self.lista_wyrazow)
         self.lista_wyrazu=list(wyraz[:])
         self.zakryj_slowo()
-        print(self.lista_wyrazu)
 
     #funkcja zamieniająca litery w wylosowanym słowie na kreski
     def zakryj_slowo(self):
         self.zakryte_slowo=[]
-        print(self.lista_wyrazu)
         for i in list(self.lista_wyrazu):
            self.zakryte_slowo.append("_")
         self.ukryte_haslo.config(text=' '.join(self.zakryte_slowo))
@@ -130,7 +126,6 @@ class Hangman():
     def sprawdz_litere(self):
         sprawdzana = self.wpisz_litere_okienko.get()
         self.wpisz_litere_okienko.delete(0,END)
-        print(sprawdzana)
         if sprawdzana in self.sprawdzane_litery:
             messagebox.showinfo(' ', 'Ta litera była już sprawdzana! Wybierz inną.')
             return 
@@ -190,7 +185,7 @@ class Hangman():
         self.sprawdzane_litery=[]
         self.bledne_litery = 0
         self.zakryte_slowo = []
-        self.draw(1)
+        self.draw(0)
         self.ukryte_haslo.config(text='')
 
         
