@@ -79,9 +79,10 @@ class Hangman():
         self.rprzycisk_2.place(x=25,y=50)
         self.rprzycisk_3.place(x=25, y=70)
         self.rprzycisk_4.place(x=25, y=90)
-
+        self.przycisk_zle_litery.place(x=25, y=110)
         self.ukryte_haslo.place(x=310, y=260)
         self.wpisz_litere_info.place(x=25, y=240)
+        
         self.wpisz_litere_okienko.place(x=25, y=260)
         self.przycisk_spr.place(x=125, y=260)
         self.przycisk_nowa_gra.place(x=170, y=470)
