@@ -199,5 +199,5 @@ class Hangman():
 okienko.resizable(0,0)
 
 #utworzenie obiektu klasy Hangman
-hangman=Hangman(okienko)
+hangman=Hangman()
 hangman.draw(5)
