@@ -66,13 +66,13 @@ class Hangman():
         self.moj_pasek_menu = Menu(self.okienko)
 
         info_menu = Menu(self.moj_pasek_menu, tearoff = 0)
-        info_menu.add_command(label = "autorzy", command = autorzy)
+        info_menu.add_command(label = "autorzy", command = self.autorzy)
         info_menu.add_command(label = "instrukcja", command = self.instrukcja)
-        self.moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
+        self.moj_pasek_menu.add_cascade(label = "informacje", menu = self.info_menu)
 
         ustawienia_menu = Menu(self.moj_pasek_menu, tearoff = 0)
         ustawienia_menu.add_command(label = "wyjście", command = self.okienko.quit)
-        self.moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
+        self.moj_pasek_menu.add_cascade(label = "ustawienia", menu = self.ustawienia_menu)
 
         self.uruchom_nowa_gre()
 
