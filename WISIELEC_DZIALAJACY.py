@@ -72,12 +72,10 @@ class Hangman():
     '''_____________________ wszystkie funkcje _____________________________ '''
     
     def autorzy():
-        tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
-        #tekst.pack(side = TOP)
+        messagebox.showinfo("Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
     
     def instrukcja():
-        tekst = Label(self.okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"Sprawdź\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"Sprawdź wykorzystane litery\". \n Aby rozpocząć nową gre naciśnij przycisk \" Nowa gra \" \nPowodzenia!")
-        #tekst.pack(side = TOP)
+        messagebox.showinfo("Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"Sprawdź\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"Sprawdź wykorzystane litery\". \n Aby rozpocząć nową gre naciśnij przycisk \" Nowa gra \" \nPowodzenia!")
 
     def losuj_kat(self):
         value=self.radio_button_wartosci.get()
