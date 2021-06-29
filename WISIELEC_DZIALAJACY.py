@@ -69,7 +69,7 @@ class Hangman():
         self.wpisz_litere_info = Label(self.okienko, text = "Podaj dowolną literę - pomiń znaki polskie!")
         self.ukryte_haslo = Label(self.okienko, text = "info")    
         self.wpisz_litere_okienko = Entry(self.okienko)
-        self.przycisk_zle_litery = Button(self.okienko, text = "Wykorzystane litery:", command = self.zle_litery)
+        self.przycisk_zle_litery = Button(self.okienko, text = "Sprawdź wykorzystane litery:", command = self.zle_litery)
         self.przycisk_spr = Button(self.okienko, text = "Sprawdź", command = self.sprawdz_litere)
         self.przycisk_nowa_gra=Button(self.okienko, text="Nowa gra", command=self.uruchom_nowa_gre)
        
@@ -180,7 +180,7 @@ class Hangman():
             self.koniec_gry('wygrales!')
             
     def zle_litery(self):
-        print(self.uzyte_bledne_litery)
+        messagebox.showinfo(self.uzyte_bledne_litery)
     
     def koniec_gry(self, status):
         print("koniec_gry", status)
