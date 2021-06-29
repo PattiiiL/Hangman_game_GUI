@@ -3,34 +3,8 @@
 from tkinter import *
 from tkinter import messagebox
 import random
-
-'''____________________ tworzymy okienko gry _____________________________'''
-
-okienko = Tk()
-okienko.title("Wisielec")
-okienko.geometry("400x500")
     
-'''_____________________ wszystkie funkcje _____________________________ '''
-
-
-def autorzy():
-    tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
-    #tekst.pack(side = TOP)
-    
-def instrukacja():
-    tekst = Label(okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"Sprawdź\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"Sprawdź wykorzystane litery\". \n Aby rozpocząć nową gre naciśnij przycisk \" Nowa gra \" \nPowodzenia!")
-    #tekst.pack(side = TOP)
-
-
-kolory=['czerwony', 'zielony', 'niebieski', 'fioletowy', 'czarny']
-owoce=['mango', 'gruszka', 'truskawka', 'banan', 'kokos']
-zwierzeta=['kot', 'pies', 'zebra', 'ryba', 'krowa']
-
-colours=['red', 'green', 'blue', 'purple', 'black']
-fruits=['mango', 'pear', 'strawberry', 'banana', 'coconut']
-animals=['cat', 'dog', 'zebra', 'fish', 'cow']
-
-alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
+'''_____________________ Tworzymy klasę Hangman _____________________________ '''
   
 class Hangman():
     def __init__(self, okienko):   
@@ -97,7 +71,6 @@ class Hangman():
         self.moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
 
         ustawienia_menu = Menu(self.moj_pasek_menu, tearoff = 0)
-        #ustawienia_menu.add_command(label = "nowa gra", command = self.nowa_gra)
         ustawienia_menu.add_command(label = "wyjście", command = self.okienko.quit)
         self.moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
 
@@ -105,8 +78,14 @@ class Hangman():
 
         mainloop()
 
+    '''_____________________ wszystkie funkcje _____________________________ '''
+    
+    def autorzy():
+        tekst = Label(okienko, text = "Autorzy: Kornelia Winiarska i Monika Patrycja Lelujko")
+        #tekst.pack(side = TOP)
+    
     def instrukcja():
-        tekst = Label(self.okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpoczac grę wybierz kategorię, z której chcesz wylosować hasło. ")
+        tekst = Label(self.okienko, text = "Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"Sprawdź\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"Sprawdź wykorzystane litery\". \n Aby rozpocząć nową gre naciśnij przycisk \" Nowa gra \" \nPowodzenia!")
         #tekst.pack(side = TOP)
 
     def losuj_kat(self):
@@ -124,6 +103,7 @@ class Hangman():
         self.losuj_wyraz()
         self.dezaktywuj_przyciski(True)
     
+    #funkcja utworzona na potrzeby funkcji uruchamiajacej nowa grę
     def dezaktywuj_przyciski(self, is_disabled):
         if is_disabled==True:
             self.rprzycisk_1.configure(state=DISABLED) 
@@ -143,23 +123,27 @@ class Hangman():
         self.zakryj_slowo()
         print(self.lista_wyrazu)
 
+    #funkcja zamieniająca litery w wylosowanym słowie na kreski
     def zakryj_slowo(self):
         self.zakryte_slowo=[]
         print(self.lista_wyrazu)
         for i in list(self.lista_wyrazu):
            self.zakryte_slowo.append("_")
         self.ukryte_haslo.config(text=' '.join(self.zakryte_slowo))
-        #messagebox.showinfo("Wylosowane słowo", print(self.zakryte_slowo))
-        #slowo_kreski = print(self.zakryte_slowo)
-        #return slowo_kreski
         
-
+    #funkcje: 
+    #sprawdzająca czy dana litera znajduje się w wylosowanym słowie oraz czy dana litere była juz sprawdzana, 
+    #wstawiająca prawidłową literę zamiast kreski w sprawdzanym słowie,
+    #zliczjąca błedne próby podania litery
+    #wyświetlająca użyte błędne litery
+    #wyświetlająca komunikaty o przegranej bądź wygranej
+    
     def sprawdz_litere(self):
         sprawdzana = self.wpisz_litere_okienko.get()
         self.wpisz_litere_okienko.delete(0,END)
         print(sprawdzana)
         if sprawdzana in self.sprawdzane_litery:
-            print('sprawdzales juz te litere')
+            messagebox.showinfo(' ', 'Ta litera była już sprawdzana! Wybierz inną.')
             return 
         self.sprawdzane_litery.append(sprawdzana)
         i=0
@@ -174,16 +158,16 @@ class Hangman():
             self.draw(self.bledne_litery)
             self.uzyte_bledne_litery += sprawdzana
             if self.bledne_litery==10:
-                self.koniec_gry('przegrales!')
+                self.koniec_gry('Przegrałeś!')
         self.ukryte_haslo.config(text=' '.join(self.zakryte_slowo))
         if '_' not in self.zakryte_slowo:
-            self.koniec_gry('wygrales!')
+            self.koniec_gry('Wygrałeś!')
             
     def zle_litery(self):
         messagebox.showinfo(self.uzyte_bledne_litery)
     
     def koniec_gry(self, status):
-        print("koniec_gry", status)
+        messagebox.showinfo("koniec_gry", status)
 
     def licz_bledy(self):
         lista_bledow=[]
@@ -198,6 +182,7 @@ class Hangman():
             if litera in alfabet:
                 uzyte_litery.append(litera)
 
+#funkcja rysująca wisielca
     def read(self):
         for i in range(self.MAX_LICZBA_BLEDOW):
             img=PhotoImage(file='hangman_'+str(i+1)+'.png')
@@ -208,6 +193,7 @@ class Hangman():
         self.miejsce_na_rysunek_hangmana.configure(image=obrazek)
         self.miejsce_na_rysunek_hangmana.image = obrazek
 
+#funkcja uruchamiajaca nowa grę po naciśnięciu odpowiedniego przycisku
     def uruchom_nowa_gre(self):
         self.dezaktywuj_przyciski(False)
         self.lista_wyrazow = []
@@ -222,8 +208,7 @@ class Hangman():
 
 #https://stackoverflow.com/questions/2969870/removing-minimize-maximize-buttons-in-tkinter   
 okienko.resizable(0,0)
+
+#utworzenie obiektu klasy Hangman
 hangman=Hangman(okienko)
 hangman.draw(5)
-okienko.mainloop()
-
-
