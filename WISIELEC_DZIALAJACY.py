@@ -4,10 +4,13 @@ from tkinter import *
 from tkinter import messagebox
 import random
     
+okienko = Tk()
+okienko.title("Wisielec")
+okienko.geometry("400x500")
 '''_____________________ Tworzymy klasę Hangman _____________________________ '''
   
 class Hangman():
-    def __init__(self, okienko):   
+    def __init__(self,okienko):   
         self.okienko = okienko
         self.miejsce_na_rysunek_hangmana = Label(self.okienko)
         self.miejsce_na_rysunek_hangmana.place(x=280,y=40)
@@ -50,19 +53,19 @@ class Hangman():
         self.przycisk_nowa_gra=Button(self.okienko, text="Nowa gra", command=self.uruchom_nowa_gre)
        
         
-        self.instrukcja.place(x=70, y=10)
-        self.autorzy.place(x=10, y=20)
-        self.txt_wybierz_kategorie.place(x=20, y=50)
-        self.rprzycisk_1.place(x=20,y=50)
-        self.rprzycisk_2.place(x=25,y=70)
-        self.rprzycisk_3.place(x=25, y=90)
-        self.rprzycisk_4.place(x=25, y=110)
-        self.przycisk_zle_litery.place(x=25, y=130)
-        self.ukryte_haslo.place(x=310, y=300)
-        self.wpisz_litere_info.place(x=25, y=280)
+        self.instrukcja.place(x=20, y=10)
+        self.autorzy.place(x=80, y=10)
+        self.txt_wybierz_kategorie.place(x=20, y=40)
+        self.rprzycisk_1.place(x=25,y=60)
+        self.rprzycisk_2.place(x=25,y=80)
+        self.rprzycisk_3.place(x=25, y=100)
+        self.rprzycisk_4.place(x=25, y=120)
+        self.przycisk_zle_litery.place(x=25, y=140)
+        self.ukryte_haslo.place(x=310, y=270)
+        self.wpisz_litere_info.place(x=25, y=250)
         
-        self.wpisz_litere_okienko.place(x=25, y=260)
-        self.przycisk_spr.place(x=125, y=260)
+        self.wpisz_litere_okienko.place(x=25, y=270)
+        self.przycisk_spr.place(x=125, y=270)
         self.przycisk_nowa_gra.place(x=170, y=470)
 
         self.uruchom_nowa_gre()
@@ -71,10 +74,10 @@ class Hangman():
 
     '''_____________________ wszystkie funkcje _____________________________ '''
     
-    def wyswietl_autorow():
+    def wyswietl_autorow(self):
         messagebox.showinfo("Autotzy","Kornelia Winiarska i Monika Patrycja Lelujko")
     
-    def wyswietl_instrukcje():
+    def wyswietl_instrukcje(self):
         messagebox.showinfo("Instrukcja","Drogi graczu, /n witaj w grze wisielec! /n Aby rozpocząć grę wybierz kategorię, z której chcesz wylosować hasło, a następnie wpisz w określone pole dowolną literę alfabetu z pominięciem znaków języka polskiego. \n Aby sprawdzić czy dana litera znajduje się w wylosowanym przez Ciebie słowie naciśnij przycisk \"SPRAWDŹ\". Możesz pomylić się 10-krotnie zanim przegrasz. \n Aby ustalić jakie litery już sprawdziłeś naciśnij przycisk \"SPRAWDŹ WYKORZYSTANE LITERY\". \n Aby rozpocząć nową gre naciśnij przycisk \" NOWA GRA\" \nPowodzenia!")
 
     def losuj_kat(self):
@@ -162,8 +165,8 @@ class Hangman():
     
     def wylacz_uzyte_litery(self, litera):
         uzyte_litery=[]
-        for litera in alfabet:
-            if litera in alfabet:
+        for litera in self.alfabet:
+            if litera in self.alfabet:
                 uzyte_litery.append(litera)
 
 #funkcja rysująca wisielca
@@ -194,5 +197,5 @@ class Hangman():
 okienko.resizable(0,0)
 
 #utworzenie obiektu klasy Hangman
-hangman=Hangman()
+hangman=Hangman(okienko)
 hangman.draw(5)
