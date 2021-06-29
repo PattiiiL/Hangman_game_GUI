@@ -49,6 +49,7 @@ class Hangman():
 
         self.alfabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'o', 'r', 's', 't', 'u', 'w', 'y', 'z']
         self.zakryte_slowo=[]
+        self.uzyte_bledne_litery = []
         # Tworzymy okienka w GUI z widgetami
         self.top_frame = Frame(self.okienko)
         self.middle_frame = Frame(self.okienko)
@@ -68,8 +69,10 @@ class Hangman():
         self.wpisz_litere_info = Label(self.okienko, text = "Podaj dowolną literę - pomiń znaki polskie!")
         self.ukryte_haslo = Label(self.okienko, text = "info")    
         self.wpisz_litere_okienko = Entry(self.okienko)
+        self.przycisk_zle_litery = Button(self.okienko, text = "Wykorzystane litery:", command = self.zle_litery)
         self.przycisk_spr = Button(self.okienko, text = "Sprawdź", command = self.sprawdz_litere)
         self.przycisk_nowa_gra=Button(self.okienko, text="Nowa gra", command=self.uruchom_nowa_gre)
+       
         
         self.txt_wybierz_kategorie.place(x=20, y=10)
         self.rprzycisk_1.place(x=25,y=30)
@@ -83,10 +86,6 @@ class Hangman():
         self.przycisk_spr.place(x=125, y=260)
         self.przycisk_nowa_gra.place(x=170, y=470)
 
-        ''' self.top_frame.pack()
-        self.middle_frame.pack()           
-        self.bottom_frame.pack()'''
-
         # Tworzymy menu gry
 
         self.moj_pasek_menu = Menu(self.okienko)
@@ -97,7 +96,6 @@ class Hangman():
         self.moj_pasek_menu.add_cascade(label = "informacje", menu = info_menu)
 
         ustawienia_menu = Menu(self.moj_pasek_menu, tearoff = 0)
-        #ustawienia_menu.add_command(label = "język", command = self.jezyk)
         #ustawienia_menu.add_command(label = "nowa gra", command = self.nowa_gra)
         ustawienia_menu.add_command(label = "wyjście", command = self.okienko.quit)
         self.moj_pasek_menu.add_cascade(label = "ustawienia", menu = ustawienia_menu)
@@ -173,13 +171,16 @@ class Hangman():
         if ok==False:
             self.bledne_litery+=1
             self.draw(self.bledne_litery)
+            self.uzyte_bledne_litery += sprawdzana
             if self.bledne_litery==10:
                 self.koniec_gry('przegrales!')
         self.ukryte_haslo.config(text=' '.join(self.zakryte_slowo))
         if '_' not in self.zakryte_slowo:
             self.koniec_gry('wygrales!')
-        # do ogarniecia zeby litery dodawaly sie na odp msc
-     
+            
+    def zle_litery(self):
+        print(self.uzyte_bledne_litery)
+    
     def koniec_gry(self, status):
         print("koniec_gry", status)
 
