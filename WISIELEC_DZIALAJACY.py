@@ -12,6 +12,8 @@ okienko.geometry("400x500")
 class Hangman():
     def __init__(self,okienko):   
         self.okienko = okienko
+        self.miejsce_na_start = Label(self.okienko)
+        self.miejsce_na_start.place(x=280,y=40)
         self.miejsce_na_rysunek_hangmana = Label(self.okienko)
         self.miejsce_na_rysunek_hangmana.place(x=280,y=40)
         self.hangman_img=[]
